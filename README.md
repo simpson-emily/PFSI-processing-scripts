@@ -1,6 +1,6 @@
-# PFSI-processing-scripts
+#### PFSI-processing-scripts
 
-# Data is supplementary to: Simpson et al. 2026. Fire-Moisture Interactions Shape Recovery Trajectories Across Temperate Vegetation Communities, Global Change Biology
+# Data is supplementary to: Simpson et al. 2026 Fire-Moisture Interactions Shape Recovery Trajectories Across Temperate Vegetation Communities, Global Change Biology
 
 ## Dataset overview
 
