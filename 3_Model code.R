@@ -90,7 +90,7 @@ df_model <- df_final %>%
     Year_c      = year - 2019.75,                  
     fireSevN   = factor(fireSevN), 
     vegTypeN   = factor(vegTypeN),
-    SM_lag1 = SMLag1             
+    SMLag1 = SMLag1             
   )
 
 df_model$fireSevN <- relevel(df_model$fireSevN, ref = "Unburnt")
@@ -100,8 +100,8 @@ df_model$vegTypeN <- relevel(df_model$vegTypeN, ref = "Dry Sclerophyll Forest")
 
 bf_recov <- bf(
   PFSI ~
-    s(Year_c, by = FireSev_N, k = 6) +
-    FireSev_N * VegType_N * SM_lag1 +
+    s(Year_c, by = fireSevN, k = 6) +
+    fireSevN * vegTypeN * SMLag1 +
     (1 | sample_id),
   family = student(),
   decomp = "QR",
