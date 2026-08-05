@@ -10,7 +10,7 @@ This dataset contains the data and scripts from a decade-long assessment (2015-2
 
 ### 1_PFSI_Calculation.js
 
-JavaScript for processing satellite images and calculating post-fire stability index values across sites and seasons.
+JavaScript for processing satellite images and calculating post-fire stability index values across seasons.
 
 ### 2_Site_Sampling.js
 
