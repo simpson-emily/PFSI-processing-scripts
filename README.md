@@ -4,7 +4,7 @@
 
 ## Dataset overview
 
-This dataset contains the data and scripts from a decade-long assessment of vegetation change following fire in the Greater Blue Mountains World Heritage Area, NSW, Australia. The dataset includes soil moisture and post-fire stability index values from 760 sampling sites stratified across five fire severity classes and seven vegetation formations. The R script and JavaScript used for processing and analysis are also provided.
+This dataset contains the data and scripts from a decade-long assessment (2015-2024) of vegetation change following fire in the Greater Blue Mountains World Heritage Area, NSW, Australia. The dataset includes soil moisture and post-fire stability index values from 760 sampling sites stratified across five fire severity classes and seven vegetation formations. 
 
 ## Files included
 
