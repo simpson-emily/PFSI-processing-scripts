@@ -3,11 +3,6 @@
 # Supplementary to: Simpson et al. 2026: Fire - Moisture Interactions Shape Recovery Trajectories Across Temperate Vegetation Communities, Global Change Biology
 # Code takes dataset [produced from JavaScripts 1 & 2] and generates model for PFSI in relation to vegetation community, fire severity and soil moisture
 # your_path_here.csv >> insert provided dataset ["Final_Dataset"]
-
-# Final_Dataset col names: 
-# sample_id [sampling site], year, season, FireSeverity [numeric], Fire_Sev_N [corresponding names - any sites prior to Spring 2019 labelled as "Unburnt"],
-# VegType [numeric], Veg_Type_N [corresponding names], PFSI [sampled Post-fire Stability Index values], SM [sampled soil moisture values], SM_lag1 [soil moisture with a yearly lag],
-# SM_lag1season [soil moisture with a seasonal lag]
 ###########################
 
 library(cmdstanr)
@@ -29,31 +24,31 @@ df_final <- read.csv("your_path_here.csv")
 
 # **** Determine if soil moisture should be lagged ****
 
-selected_cols <- df_final[, c("SM", "SM_lag1", "SM_lag1seas", "PFSI")]
+selected_cols <- df_final[, c("SM", "SMLag1", "SMLag1Seas", "PFSI")]
 cor_matrix <- cor(selected_cols, use = "complete.obs", method = "pearson")
 corrplot(cor_matrix, method = "number", type = "upper", tl.col = "black", tl.srt = 45)
 
 df_final$SM <- scale(df_final$SM, center = TRUE, scale = TRUE)
-df_final$SM_lag1 <- scale(df_final$SM_lag1, center = TRUE, scale = TRUE)
-df_final$SM_lag1seas <- scale(df_final$SM_lag1seas, center = TRUE, scale = TRUE)
+df_final$SM_lag1 <- scale(df_final$SMLag1, center = TRUE, scale = TRUE)
+df_final$SM_lag1seas <- scale(df_final$SMLag1Seas, center = TRUE, scale = TRUE)
 
 # Model with no lag
 sm_model <- lm(
-  PFSI ~ VegType_N + SM + FireSev_N,
+  PFSI ~ vegTypeN + SM + fireSevN,
   data = df_final
 )
 summary(sm_model)
 
 # Model with yearly lag
 year_model <- lm(
-  PFSI ~ VegType_N + SM_lag1 + FireSev_N,
+  PFSI ~ vegTypeN + SMLag1 + fireSevN,
   data = df_final
 )
 summary(year_model)
 
 # Model with seasonal lag
 seas_model <- lm(
-  PFSI ~ VegType_N + SM_lag1seas + FireSev_N,
+  PFSI ~ vegTypeN + SMLag1Seas + fireSevN,
   data = df_final
 )
 summary(seas_model)
@@ -93,13 +88,13 @@ print(model_comparison)
 df_model <- df_final %>% 
   mutate(
     Year_c      = year - 2019.75,                  
-    FireSev_N   = factor(FireSev_N), 
-    VegType_N   = factor(VegType_N),
-    SM_lag1 = SM_lag1               
+    fireSevN   = factor(fireSevN), 
+    vegTypeN   = factor(vegTypeN),
+    SM_lag1 = SMLag1             
   )
 
-df_model$FireSev_N <- relevel(df_model$FireSev_N, ref = "Unburnt")
-df_model$VegType_N <- relevel(df_model$VegType_N, ref = "Dry Sclerophyll Forest")
+df_model$fireSevN <- relevel(df_model$fireSevN, ref = "Unburnt")
+df_model$vegTypeN <- relevel(df_model$vegTypeN, ref = "Dry Sclerophyll Forest")
 
 # Test model priors
 
