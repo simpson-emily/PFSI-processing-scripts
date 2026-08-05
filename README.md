@@ -29,7 +29,7 @@ Site-level measurements of vegetation change (PFSI) and soil moisture (SM) and s
 * year: Sampling year
 * season: Sampling season
 * fireSeverity: Numeric fire severity class (0 - 5).
-* fireSevN: Qualitative fire severity class (0 = Unburnt, 2 = Low: burnt understorey & unburnt canopy, 3 = Moderate: partial canopy scorch, 4 = High: complete canopy scorch & partial canopy consumption, 5 = Extreme: full canopy consumption)
+* fireSevN: Qualitative fire severity class (0 = Unburnt, 1 = Not Classified (excluded from dataset), 2 = Low: burnt understorey & unburnt canopy, 3 = Moderate: partial canopy scorch, 4 = High: complete canopy scorch & partial canopy consumption, 5 = Extreme: full canopy consumption)
 * vegType: Numeric vegetation code (5, 6, 8, 9, 11, 34, 1516)
 * vegTypeN: Qualitative vegetation class (5 = Forested Wetland, 6 = Freshwater Wetland, 8 = Grassy Woodland, 9 = Heathland, 11 = Rainforest, 34 = Dry Sclerophyll Forest, 1516 = Wet Sclerophyll Forest)
 * PFSI = Post-fire Stability Index values
